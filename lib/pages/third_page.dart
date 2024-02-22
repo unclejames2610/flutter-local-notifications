@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class SecondPage extends StatelessWidget {
+class ThirdPage extends StatelessWidget {
   // final String payload;
-  const SecondPage({
+  const ThirdPage({
     super.key,
     // required this.payload,
   });
@@ -10,8 +10,9 @@ class SecondPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Second Page")),
-      body: Text("payload"),
-    );
+        appBar: AppBar(
+          title: Text("Third Page"),
+        ),
+        body: Text("payload"));
   }
 }

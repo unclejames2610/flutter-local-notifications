@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:notifications_tutorial/local_notifications.dart';
+import 'package:notifications_tutorial/pages/second_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -9,6 +10,19 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    listenToNotifications();
+    super.initState();
+  }
+
+  listenToNotifications() {
+    print("Listening to notification");
+    LocalNotifications.onClickNotification.stream.listen((event) {
+      Navigator.of(context).pushNamed(event);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +47,24 @@ class _HomePageState extends State<HomePage> {
                     LocalNotifications.showSimpleNotification(
                         title: "Simple Notification",
                         body: "This is a simple notification",
-                        payload: "simple");
+                        payload: "/second/");
+                  },
+                ),
+                TextButton(
+                  child: Text("Simple Notification 2"),
+                  onPressed: () {
+                    // NotificationApi.showNotification(
+                    //     title: "Ebuka",
+                    //     body: "Look at this",
+                    //     payload: 'ebuka.u');
+
+                    // LocalNotificationService()
+                    //     .showNotificationAndroid("Title", "value");
+
+                    LocalNotifications.showSimpleNotification(
+                        title: "Simple Notification 2",
+                        body: "This is a simple notification 2",
+                        payload: "/third/");
                   },
                 ),
                 TextButton(
